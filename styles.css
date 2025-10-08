@@ -1,0 +1,219 @@
+:root {
+  color-scheme: light dark;
+  --bg: radial-gradient(circle at top, #fefefe 0%, #e6e9f0 100%);
+  --bg-dark: radial-gradient(circle at top, #10131a 0%, #0d0f14 100%);
+  --surface: rgba(255, 255, 255, 0.65);
+  --surface-dark: rgba(18, 22, 30, 0.75);
+  --accent: #f25f5c;
+  --accent-dark: #ff877d;
+  --text: #20242f;
+  --text-muted: rgba(32, 36, 47, 0.6);
+  --text-dark: rgba(255, 255, 255, 0.82);
+  --text-muted-dark: rgba(255, 255, 255, 0.55);
+  --shadow: 0 20px 60px rgba(36, 39, 47, 0.12);
+  --shadow-dark: 0 20px 60px rgba(0, 0, 0, 0.5);
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.6s ease, color 0.6s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: var(--bg-dark);
+    color: var(--text-dark);
+  }
+}
+
+.app {
+  width: min(420px, 90vw);
+  padding: 2.5rem 2.2rem;
+  border-radius: 32px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px);
+  text-align: center;
+  transition: background 0.6s ease, box-shadow 0.6s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  .app {
+    background: var(--surface-dark);
+    box-shadow: var(--shadow-dark);
+  }
+}
+
+h1 {
+  margin: 0 0 0.5rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+}
+
+.tagline {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+@media (prefers-color-scheme: dark) {
+  .tagline {
+    color: var(--text-muted-dark);
+  }
+}
+
+.mode-selector {
+  margin: 1.8rem 0;
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.mode-button {
+  flex: 1 1 auto;
+  padding: 0.75rem 1rem;
+  border-radius: 16px;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.mode-button:hover,
+.mode-button:focus-visible {
+  outline: none;
+  background: rgba(242, 95, 92, 0.12);
+}
+
+.mode-button.active {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 12px 25px rgba(242, 95, 92, 0.35);
+  transform: translateY(-2px);
+}
+
+@media (prefers-color-scheme: dark) {
+  .mode-button:hover,
+  .mode-button:focus-visible {
+    background: rgba(255, 135, 125, 0.16);
+  }
+
+  .mode-button.active {
+    background: var(--accent-dark);
+  }
+}
+
+.timer-display {
+  font-size: clamp(3.5rem, 10vw, 4.8rem);
+  font-variant-numeric: tabular-nums;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 2rem 0 2.4rem;
+}
+
+.timer-display span {
+  display: inline-block;
+  min-width: 2ch;
+}
+
+.separator {
+  opacity: 0.55;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+button {
+  font: inherit;
+  border-radius: 999px;
+  padding: 0.9rem 1.8rem;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.primary {
+  background: linear-gradient(135deg, var(--accent), #f79d84);
+  color: #fff;
+  box-shadow: 0 15px 25px rgba(242, 95, 92, 0.35);
+}
+
+.primary:hover,
+.primary:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 30px rgba(242, 95, 92, 0.45);
+}
+
+.ghost {
+  background: rgba(0, 0, 0, 0.05);
+  color: inherit;
+}
+
+.ghost:hover,
+.ghost:focus-visible {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  .ghost {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .ghost:hover,
+  .ghost:focus-visible {
+    background: rgba(255, 255, 255, 0.12);
+  }
+}
+
+.session-info {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+@media (prefers-color-scheme: dark) {
+  .session-info {
+    color: var(--text-muted-dark);
+  }
+}
+
+@media (max-width: 480px) {
+  .app {
+    padding: 2rem 1.6rem;
+    border-radius: 24px;
+  }
+
+  .controls {
+    flex-direction: column;
+  }
+
+  button {
+    width: 100%;
+  }
+}
