@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Pomodoro Minimal</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app" aria-label="Temporizador Pomodoro">
+      <div class="app-layout">
+        <section class="timer-panel" aria-label="Panel de temporizador y controles">
+          <header>
+            <h1>Pomodoro</h1>
+            <p class="tagline">Enfoque sereno, descansos conscientes.</p>
+            <div class="mode-status" aria-live="polite">
+              <span id="mode-emoji" role="img" aria-hidden="true">💼</span>
+              <span id="mode-status-text">Modo: Trabajo</span>
+            </div>
+          </header>
+
+          <section class="mode-selector" aria-label="Selecciona el tipo de intervalo">
+            <button type="button" class="mode-button active" data-mode="pomodoro">
+              Trabajo
+            </button>
+            <button type="button" class="mode-button" data-mode="shortBreak">
+              Pausa corta
+            </button>
+            <button type="button" class="mode-button" data-mode="longBreak">
+              Pausa larga
+            </button>
+          </section>
+
+          <section class="timer-display" aria-live="polite">
+            <span id="minutes">25</span>
+            <span class="separator">:</span>
+            <span id="seconds">00</span>
+          </section>
+
+          <section class="controls" aria-label="Controles del temporizador">
+            <button type="button" id="toggle" class="primary">
+              Iniciar
+            </button>
+            <button type="button" id="reset" class="ghost">
+              Reiniciar
+            </button>
+            <button type="button" id="extend" class="ghost">
+              +5 minutos
+            </button>
+          </section>
+
+          <footer>
+            <p class="session-info">
+              Sesiones completadas:
+              <span id="sessions">0</span>
+            </p>
+          </footer>
+        </section>
+
+        <aside class="focus-panel" aria-label="Panel de objetivos del pomodoro">
+          <section class="focus-area">
+            <h2>Objetivo de la sesión</h2>
+            <label class="sr-only" for="focus-task">Objetivo del pomodoro</label>
+            <input
+              id="focus-task"
+              name="focus-task"
+              type="text"
+              maxlength="140"
+              placeholder="Escribe una frase breve y presiona Enter"
+              autocomplete="off"
+            />
+            <p class="focus-hint">Presiona Enter para guardarlo en el registro.</p>
+          </section>
+
+          <section class="focus-log" aria-live="polite" aria-label="Registro de objetivos completados">
+            <h2>Registro de objetivos</h2>
+            <ul id="focus-log"></ul>
+          </section>
+        </aside>
+      </div>
+    </main>
+    <canvas id="confetti-canvas" class="confetti-canvas" aria-hidden="true"></canvas>
+    <script src="app.js"></script>
+  </body>
+</html>
