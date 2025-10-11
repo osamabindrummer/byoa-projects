@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="{{base}}/assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrapper">
+        <a class="logo" href="{{base}}/index.html">Mi Sitio Estático</a>
+        <nav class="site-nav">
+          <a href="{{base}}/index.html">Inicio</a>
+          <a href="{{base}}/blog/index.html">Blog</a>
+          <a href="{{base}}/about.html">Acerca de</a>
+          <a href="{{base}}/faq.html">Preguntas frecuentes</a>
+          <a href="{{base}}/contact.html">Contacto</a>
+        </nav>
+      </div>
+    </header>
+    <main class="content wrapper">
+      {{content}}
+    </main>
+    <footer class="site-footer">
+      <div class="wrapper">
+        <p>© {{year}} Mi Sitio Estático. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+  </body>
+</html>

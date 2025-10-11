@@ -1,0 +1,16 @@
+{
+  "name": "simple-static-site",
+  "version": "0.1.0",
+  "description": "Sitio estático generado desde Markdown con un script sencillo de Node.",
+  "scripts": {
+    "build": "node src/build.js"
+  },
+  "keywords": [
+    "static-site",
+    "markdown",
+    "node"
+  ],
+  "dependencies": {
+    "marked": "^9.1.6"
+  }
+}
