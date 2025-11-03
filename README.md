@@ -1,6 +1,6 @@
 # Build Your Own Apps — Registro de proyectos
 
-Este repositorio recopila los proyectos que desarrollo como estudiante del curso **Build Your Own Apps** de Nat Eliason. La idea es centralizar cada ejercicio y mantener un historial claro de mi progreso a medida que avanzo en el programa.
+Este repositorio recopila los proyectos que desarrollo como estudiante del curso **[Build Your Own Apps](https://learn.buildyourownapps.com/c/start-here)** de Nat Eliason. La idea es centralizar cada ejercicio y mantener un historial claro de mi progreso a medida que avanzo en el programa.
 
 ## App 1 · Pomodoro Timer Minimalista - [Link](https://osamabindrummer.github.io/byoa-projects/app1/index.html)
 
