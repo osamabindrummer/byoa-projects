@@ -4,19 +4,38 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Acerca de</title>
+    <script>
+      (() => {
+        try {
+          const stored = localStorage.getItem('tema-preferido');
+          if (stored === 'theme-claro' || stored === 'theme-oscuro') {
+            document.documentElement.classList.add(stored);
+          }
+        } catch (error) {
+          /* ignorar modo persistido si no está disponible localStorage */
+        }
+      })();
+    </script>
     <link rel="stylesheet" href="./assets/styles.css" />
   </head>
   <body>
     <header class="site-header">
-      <div class="wrapper">
-        <a class="logo" href="./index.html">Mi Sitio Estático</a>
-        <nav class="site-nav">
+      <div class="wrapper site-header__inner">
+        <div class="brand-block">
+          <p class="eyebrow">Sitio personal</p>
+          <a class="logo" href="./index.html">Mi Sitio Estático</a>
+        </div>
+        <nav class="site-nav" aria-label="Navegación principal">
           <a href="./index.html">Inicio</a>
           <a href="./blog/index.html">Blog</a>
           <a href="./about.html">Acerca de</a>
           <a href="./faq.html">Preguntas frecuentes</a>
           <a href="./contact.html">Contacto</a>
         </nav>
+        <button class="theme-toggle" type="button" aria-label="Cambiar entre modo claro y oscuro">
+          <span class="sr-only">Cambiar entre modo claro y oscuro</span>
+          <span class="theme-toggle__icon" aria-hidden="true">☾</span>
+        </button>
       </div>
     </header>
     <main class="content wrapper">
@@ -36,5 +55,62 @@
         <p>© 2025 Mi Sitio Estático. Todos los derechos reservados.</p>
       </div>
     </footer>
+    <script>
+      (() => {
+        const storageKey = 'tema-preferido';
+        const root = document.documentElement;
+        const button = document.querySelector('.theme-toggle');
+        const storage = {
+          get: () => {
+            try {
+              return localStorage.getItem(storageKey);
+            } catch (error) {
+              return null;
+            }
+          },
+          set: (value) => {
+            try {
+              localStorage.setItem(storageKey, value);
+            } catch (error) {
+              /* ignorar modos no persistidos */
+            }
+          },
+        };
+
+        const setClass = (theme) => {
+          root.classList.remove('theme-claro', 'theme-oscuro');
+          root.classList.add(theme);
+        };
+
+        const updateButton = (theme) => {
+          if (!button) return;
+          const icon = button.querySelector('.theme-toggle__icon');
+          button.setAttribute('aria-pressed', theme === 'theme-oscuro');
+          if (icon) icon.textContent = theme === 'theme-oscuro' ? '☾' : '☀︎';
+        };
+
+        const preferred = () => storage.get() || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'theme-oscuro' : 'theme-claro');
+
+        const apply = (theme) => {
+          if (theme !== 'theme-claro' && theme !== 'theme-oscuro') return;
+          setClass(theme);
+          updateButton(theme);
+        };
+
+        apply(root.classList.contains('theme-oscuro') ? 'theme-oscuro' : preferred());
+
+        button?.addEventListener('click', () => {
+          const next = root.classList.contains('theme-oscuro') ? 'theme-claro' : 'theme-oscuro';
+          storage.set(next);
+          apply(next);
+        });
+
+        const media = window.matchMedia('(prefers-color-scheme: dark)');
+        media.addEventListener?.('change', (event) => {
+          if (storage.get()) return;
+          apply(event.matches ? 'theme-oscuro' : 'theme-claro');
+        });
+      })();
+    </script>
   </body>
 </html>
