@@ -36,3 +36,10 @@ Este repositorio reúne múltiples apps creadas durante el curso Build Your Own 
 - Incluye contexto suficiente cuando afectes a varias apps; especifica qué carpeta se modifica.
 
 Seguir estas pautas mantendrá el código consistente y fácil de extender a medida que se agreguen nuevas aplicaciones.
+
+## Puertos y servidores locales
+
+- Las apps se generan como sitios estáticos. `app2` usa Node para construir archivos y no requiere servidor local ni puerto reservado.
+- Antes de añadir o cambiar un servidor, revisar los puertos documentados en los demás repositorios de `~/Developer`; reservar una dirección propia y actualizar en el mismo cambio el lanzador, la configuración, los enlaces internos y el README.
+- Los lanzadores deben fallar con un mensaje claro si su puerto está ocupado. No usar una respuesta HTTP de otro proceso como prueba de que arrancó el servidor propio; verificar el proceso o una señal de identidad antes de abrir el navegador.
+- No iniciar automáticamente otro puerto si el puerto esperado está ocupado, salvo que el proyecto tenga un rango exclusivo documentado y muestre la dirección elegida.

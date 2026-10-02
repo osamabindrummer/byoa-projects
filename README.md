@@ -16,3 +16,7 @@ Este repositorio recopila los proyectos que desarrollo como estudiante del curso
 - **Uso:** Cualquier persona puede abrir el enlace anterior y navegar el sitio directamente desde su navegador, sin instalaciones ni dependencias adicionales.
 
 Más adelante se agregarán nuevas secciones para cada app que construya durante el curso, manteniendo esta guía como referencia única del progreso.
+
+## Uso en Linux
+
+[Guía para Linux](LINUX.md): instalación y apertura local desde la terminal.
